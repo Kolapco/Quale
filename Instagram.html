@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="/tela.css">
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+      }
+
+      body {
+        background-color: #fafafa;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #dbdbdb;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo-img {
+        height: 40px;
+      }
+
+      .search {
+        width: 200px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #dbdbdb;
+      }
+
+      .navigation {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-icon {
+        margin-left: 20px;
+        height: 24px;
+        cursor: pointer;
+      }
+
+      .profile-pic {
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      /* Stories */
+      .stories {
+        display: flex;
+        padding: 10px;
+        background-color: white;
+        border-bottom: 1px solid #dbdbdb;
+        overflow-x: auto;
+      }
+
+      .story {
+        text-align: center;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .story-pic {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 2px solid #c13584;
+      }
+
+      .story-name {
+        margin-top: 5px;
+        font-size: 12px;
+      }
+
+      /* Feed */
+      .feed {
+        padding: 20px;
+      }
+
+      .post {
+        background-color: white;
+        border: 1px solid #dbdbdb;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .post-profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .post-username {
+        font-weight: bold;
+      }
+
+      .post-img {
+        width: 100%;
+        height: auto;
+      }
+
+      .post-actions {
+        display: flex;
+        padding: 10px;
+      }
+
+      .action-icon {
+        width: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .post-caption {
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      .comments-section {
+        padding: 10px;
+        border-top: 1px solid #dbdbdb;
+      }
+
+      .comment-input {
+        width: 80%;
+        padding: 5px;
+        margin-right: 5px;
+      }
+
+      .add-comment-btn {
+        padding: 5px;
+        background-color: #0095f6;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .add-comment-btn:hover {
+        background-color: #007bb5;
+      }
+
+      .comment-list {
+        margin-top: 10px;
+        max-height: 100px;
+        overflow-y: auto;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.9);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      
+    </style>
+    
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="header">
+        <div class="logo">
+            <img src="/Instagram /174855.png" alt="Instagram Logo" class="logo-img">
+        </div>
+        <input type="text" class="search" placeholder="Search">
+        <nav class="navigation">
+            <img src="/Instagram /iconfinder-social-media-applications-3instagram-4102579_113804.webp" alt="Home" class="nav-icon">
+            <img src="/Instagram /7083630.png" alt="Messages" class="nav-icon">
+            <img src="/Instagram /4406267.png" alt="Explore" class="nav-icon">
+            <img src="/Instagram /7167500.png" alt="Likes" class="nav-icon">
+            <img src="/imagens/IMG-20241019-WA0000.jpg" alt="Profile" class="nav-icon profile-pic">
+        </nav>
+    </header>
+
+    <!-- Stories Section -->
+    <section class="stories">
+        <div class="story" onclick="openStory('/imagens/IMG-20241018-WA0038.jpg')">
+            <img src="/imagens/IMG-20241018-WA0038.jpg" alt="Story" class="story-pic">
+            <p class="story-name">User1</p>
+        </div>
+        <div class="story" onclick="openStory('/imagens/IMG-20241018-WA0034.jpg')">
+            <img src="/imagens/IMG-20241018-WA0034.jpg" alt="Story" class="story-pic">
+            <p class="story-name">User2</p>
+        </div>
+        <!-- Add more stories -->
+    </section>
+
+    <!-- Feed Section -->
+    <section class="feed">
+        <div class="post">
+            <div class="post-header">
+                <img src="/imagens/operador-de-cnc-900-x-600-px.png" alt="Profile" class="post-profile-pic">
+                <span class="post-username">scoundrel</span>
+            </div>
+            <img src="/imagens/IMG-20241018-WA0036.jpg" alt="Post Image" class="post-img">
+           <div class="post-actions">
+                <img src="/Instagram /833472.png" alt="Like" class="action-icon">
+                <img src="/Instagram /9722f60b799c49612d9325786a69555c-cone-de-bolha-de-bate-papo-do-instagram.png" alt="Comment" class="action-icon" onclick="toggleComments(this)">
+                <img src="/Instagram /7083630.png" alt="Share" class="action-icon">
+            </div>
+            <div class="post-caption">
+                <strong>scoundrel</strong> Linhas e formas que transcendem a lógica.
+            </div>
+            <div class="comments-section" style="display: none;">
+                <div class="comment-list"></div>
+                <input type="text" placeholder="Add a comment..." class="comment-input">
+                <button class="add-comment-btn" onclick="addComment(this)">Post</button>
+            </div>
+        </div>
+        <!-- Add more posts -->
+    </section>
+
+    <!-- Story Modal -->
+    <div id="storyModal" class="modal">
+        <span class="close" onclick="closeStory()">&times;</span>
+        <img class="modal-content" id="storyImg">
+    </div>
+
+    <script>
+      // Open Story Modal
+      function openStory(storySrc) {
+          var modal = document.getElementById("storyModal");
+          var modalImg = document.getElementById("storyImg");
+          modal.style.display = "flex";
+          modalImg.src = storySrc;
+
+          // Close modal after 5 seconds (5000 milliseconds)
+          setTimeout(closeStory, 2500);
+      }
+
+      // Close Story Modal
+      function closeStory() {
+          var modal = document.getElementById("storyModal");
+          modal.style.display = "none";
+      }
+
+      // Toggle Comments Section
+      function toggleComments(button) {
+          var commentsSection = button.closest('.post').querySelector('.comments-section');
+          commentsSection.style.display = commentsSection.style.display === 'none' ? 'block' : 'none';
+      }
+
+      // Add Comment Function
+      function addComment(button) {
+          var commentInput = button.closest('.comments-section').querySelector('.comment-input');
+          var commentList = button.closest('.comments-section').querySelector('.comment-list');
+
+          if (commentInput.value.trim() !== '') {
+              var newComment = document.createElement('p');
+              newComment.textContent = commentInput.value;
+              commentList.appendChild(newComment);
+              commentInput.value = '';
+          }
+      }
+    </script>
+</body>
+</html>
